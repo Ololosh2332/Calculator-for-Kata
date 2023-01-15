@@ -37,12 +37,15 @@ public class Calcul {
             if (!one.equals(two)){
                 System.out.println("Не вышло");
             }
-            if (one.equals(two)){
+            if (one.equals("arab") && two.equals("arab")){
                 operation(arr2, a, b);
             }
+        if (one.equals("roman") && two.equals("roman")){
+            operationRome(arr2, roman,  a, b);
+        }
         }
 
-        static void operation (String [] arr2, int a, int b){
+        static void operation (String [] arr2,  int a, int b){
     for (int i = 0; i< arr2.length; i++){
         if (arr2[i].equals("+")){
             System.out.println(a+b);
@@ -57,6 +60,22 @@ public class Calcul {
             System.out.println(a/b);
         }
     }
+    }
+    static void operationRome (String [] arr2, String [] rome, int a, int b){
+        for (int i = 0; i< arr2.length; i++){
+            if (arr2[i].equals("+")){
+                System.out.println(rome[a+b]);
+            }
+            if (arr2[i].equals("-")){
+                System.out.println(rome[a-b]);
+            }
+            if (arr2[i].equals("*")){
+                System.out.println(rome[a*b]);
+            }
+            if (arr2[i].equals("/")){
+                System.out.println(rome[a/b]);
+            }
+        }
     }
 
 }
