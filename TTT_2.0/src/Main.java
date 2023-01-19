@@ -8,7 +8,7 @@ public class Main {
 
     public static String calc(String input) throws throwsException {
         String str = input;
-        String res = "";
+        String res;
         str = str.replaceAll("\\s+", "");
         str = str.toUpperCase();
         String[] arr = str.split("");
@@ -17,10 +17,11 @@ public class Main {
         if (parsingNumberRom(arr).equals("Roman")){
             if (!romanSize(arr))
             {
-                throw new throwsException("// превышен допустимый диапазон числа");
+                throw new throwsException("// РїСЂРµРІС‹С€РµРЅ РґРѕРїСѓСЃС‚РёРјС‹Р№ РґРёР°РїР°Р·РѕРЅ С‡РёСЃР»Р°");
             }
             if (romanSize(arr)) {
-                res = romanOperation(arr,o).toString();
+                System.out.println("СЂРѕРјР°РЅ СЃР°Р№Р· РїСЂРѕС€РµР»");
+                res = romanOperation(arr,o);
             }
         }
         if (parsingNumberRom(arr).equals("false")){
@@ -28,11 +29,11 @@ public class Main {
                 res = Integer.toString(arabOperation(arr, o));
             }
             else {
-                throw new throwsException("// превышен допустимый диапазон числа");
+                throw new throwsException("// РїСЂРµРІС‹С€РµРЅ РґРѕРїСѓСЃС‚РёРјС‹Р№ РґРёР°РїР°Р·РѕРЅ С‡РёСЃР»Р°");
             }
         }
         else {
-            throw new throwsException("// Разные системы счисления");
+            throw new throwsException("// Р Р°Р·РЅС‹Рµ СЃРёСЃС‚РµРјС‹ СЃС‡РёСЃР»РµРЅРёСЏ");
         }
         return res;
     }
@@ -47,7 +48,7 @@ public class Main {
             }
         }
         if (count < 1 | count > 1) {
-            throw new throwsException("//т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+            throw new throwsException("//С‚.Рє. С„РѕСЂРјР°С‚ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ Р·Р°РґР°РЅРёСЋ - РґРІР° РѕРїРµСЂР°РЅРґР° Рё РѕРґРёРЅ РѕРїРµСЂР°С‚РѕСЂ (+, -, /, *)");
         } else return o;
     }
 
@@ -98,7 +99,7 @@ public class Main {
 
                 }
                 if (RomanNumber.valueOf(arr[0]).ordinal()<RomanNumber.valueOf(arr[1]).ordinal()){
-                    throw new throwsException("// В римской системе нет отрицательных чисел");
+                    throw new throwsException("// Р’ СЂРёРјСЃРєРѕР№ СЃРёСЃС‚РµРјРµ РЅРµС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… С‡РёСЃРµР»");
                 }
             case ('*'):
                 return (RomanNumber.values()[RomanNumber.valueOf(arr[0]).ordinal() * RomanNumber.valueOf(arr[1]).ordinal()]).toString();
@@ -107,7 +108,7 @@ public class Main {
                 return (RomanNumber.values()[RomanNumber.valueOf(arr[0]).ordinal() / RomanNumber.valueOf(arr[1]).ordinal()]).toString();
 
             default: {
-                throw new throwsException("//т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                throw new throwsException("//С‚.Рє. С„РѕСЂРјР°С‚ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ Р·Р°РґР°РЅРёСЋ - РґРІР° РѕРїРµСЂР°РЅРґР° Рё РѕРґРёРЅ РѕРїРµСЂР°С‚РѕСЂ (+, -, /, *)");
             }}}
 
     static int arabOperation (String[] arr, char o){
