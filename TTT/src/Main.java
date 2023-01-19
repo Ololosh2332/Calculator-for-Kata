@@ -18,8 +18,9 @@ public class Main {
         calc calc1 = new calc(str);
         calc1.setArr();
         calc1.setArr2();
-        calc1.operation(calc1.arr2);
+
         calc1.parsingLength(calc1.arr);
+        calc1.operation(calc1.arr2);
         calc1.setO();
 
         if(calc1.isPresent(calc1.arr)){
@@ -149,6 +150,10 @@ class calc {
             case ('-'):
                 if (RomanNumber.valueOf(arr[0]).ordinal()>RomanNumber.valueOf(arr[1]).ordinal()) {
                     return (RomanNumber.values()[RomanNumber.valueOf(arr[0]).ordinal() - RomanNumber.valueOf(arr[1]).ordinal()]).toString();
+
+                }
+                if (RomanNumber.valueOf(arr[0]).ordinal()==RomanNumber.valueOf(arr[1]).ordinal()) {
+                    return "NULL";
 
                 }
                 if (RomanNumber.valueOf(arr[0]).ordinal()<RomanNumber.valueOf(arr[1]).ordinal()){
