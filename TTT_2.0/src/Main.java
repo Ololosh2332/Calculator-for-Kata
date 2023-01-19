@@ -13,14 +13,14 @@ public class Main {
         str = str.toUpperCase();
         String[] arr = str.split("");
         if (arr.length < 2) {
-            throw new throwsException("// Не являетя математической операцией");
+            throw new throwsException("//т.к. строка не являетя математической операцией");
         }
         char o = operator(arr);
         arr = str.split("[+-/*]");
 
         if (parsingNumberRom(arr)) {
             if (!romanSize(arr)) {
-                throw new throwsException("// превышен допустимый диапазон числа");
+                throw new throwsException("//т.к. превышен допустимый диапазон числа");
             }
             if (romanSize(arr)) {
                 return romanOperation(arr, o);
@@ -31,14 +31,15 @@ public class Main {
                 if (arabSize(arr)) {
                     return Integer.toString(arabOperation(arr, o));
                 } else {
-                    throw new throwsException("// превышен допустимый диапазон числа");
+                    throw new throwsException("//т.к. превышен допустимый диапазон числа");
                 }
             } else {
-                throw new throwsException("// Разные системы счисления");
+                throw new throwsException("//т.к. используются разные системы счисления");
             }
         }
         return null;
     }
+
     static char operator(String[] arr) throws throwsException {
         int count = 0;
         char o = 0;
@@ -52,7 +53,8 @@ public class Main {
             throw new throwsException("//т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         } else return o;
     }
-    static boolean parsingNumberRom(String[] arr) throws throwsException {
+
+    static boolean parsingNumberRom(String[] arr) {
         try {
             RomanNumber.valueOf(RomanNumber.class, arr[0]);
             RomanNumber.valueOf(RomanNumber.class, arr[1]);
@@ -61,6 +63,7 @@ public class Main {
             return false;
         }
     }
+
     static boolean romanSize(String[] arr) {
         if (RomanNumber.valueOf(arr[0]).ordinal() < 1 | RomanNumber.valueOf(arr[0]).ordinal() > 10) {
             return false;
@@ -73,6 +76,7 @@ public class Main {
         }
         return false;
     }
+
     static boolean arabSize(String[] arr) {
         if (Integer.parseInt(arr[0]) < 1 | Integer.parseInt(arr[0]) > 10) {
             return false;
@@ -82,6 +86,7 @@ public class Main {
         }
         return true;
     }
+
     static String romanOperation(String arr[], char o) throws throwsException {
         switch (o) {
             case ('+'):
@@ -110,6 +115,7 @@ public class Main {
             }
         }
     }
+
     static int arabOperation(String[] arr, char o) {
         switch (o) {
             case ('+'):
@@ -123,6 +129,7 @@ public class Main {
         }
         return 0;
     }
+
     static boolean parsingArab(String[] arr) {
         try {
             int a = Integer.parseInt(arr[0]);
